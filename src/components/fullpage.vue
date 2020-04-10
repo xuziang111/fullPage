@@ -1,6 +1,8 @@
 <template>
 <div @wheel="wheelEvent($event)">
-        <transition-group 
+        <transition-group
+                  @enter="enter"
+          @leave="leave" 
             tag="div" 
             :name="name">
                 <div class="block" 
@@ -11,7 +13,7 @@
                 @transitionend = "wheelEnd"
                 
             >{{list}}
-            <slot v-if="index===0"></slot>
+            <slot v-if="index===0" :name="'page'+(index+1)" :traState="traState"></slot>
             </div>
         </transition-group>
         </div>
@@ -37,7 +39,8 @@ export default {
     currentIndex:0,
     name:'',
     isWheel:true,
-    endEnter:1
+    endEnter:1,
+    traState:'entry',
         }
     },
     methods:{
@@ -66,6 +69,16 @@ export default {
         this.endEnter = 0
         this.isWheel =true
       }
+    },
+    enter(el,done){
+      
+      this.traState = 'leave'
+      // done()
+    },
+    leave(el,done){ 
+      
+      this.traState = 'enter'
+      // done()
     }
   },
   mounted(){

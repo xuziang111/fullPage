@@ -28,9 +28,28 @@
     </noscript>
     <div id="app">
       <fullpage :bgcolor="bgcolor" :pages="pages" :basecolor="basecolor">
-        <div>
-          <page1></page1>
-        </div>
+            <template v-slot:page1="props">
+              <page1 :trastate="props.traState"></page1>
+              {{props}}
+            </template>
+
+            <template v-slot:page2="props">
+                <page1 :trastate="props.traState"></page1>
+                {{props}}
+              </template>
+
+              <template v-slot:page3="props">
+                  <page1 :trastate="props.traState"></page1>
+                  {{props}}
+                </template>
+
+                <template v-slot:page4="props">
+                    <page1 :trastate="props.traState"></page1>
+                    {{props}}
+                  </template>
+            <!-- <template>
+                <page1></page1>
+              </template> -->
       </fullpage>
     </div>
     <!-- built files will be auto injected -->
