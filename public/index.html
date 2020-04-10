@@ -27,7 +27,11 @@
      
     </noscript>
     <div id="app">
-      <fullpage :bgcolor="bgcolor" :pages="pages"></fullpage>
+      <fullpage :bgcolor="bgcolor" :pages="pages" :basecolor="basecolor">
+        <div>
+          <page1></page1>
+        </div>
+      </fullpage>
     </div>
     <!-- built files will be auto injected -->
   </body>

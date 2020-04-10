@@ -7,9 +7,12 @@
                 v-show="index==currentIndex" 
                 v-for="(list,index) in pages" 
                 :key="index" 
-                :style="{'background-color':bgcolor[index]}"
+                :style="{'background-color':bgcolor&&bgcolor[index]?bgcolor[index]:basecolor}"
                 @transitionend = "wheelEnd"
-            >{{list}}</div>
+                
+            >{{list}}
+            <slot v-if="index===0"></slot>
+            </div>
         </transition-group>
         </div>
 </template>
@@ -24,6 +27,9 @@ export default {
         pages:{
             type:Number,
             required:true,
+        },
+        basecolor:{
+          default:'#c80'
         }
     },
     data(){
