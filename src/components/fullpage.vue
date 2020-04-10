@@ -71,13 +71,22 @@ export default {
       }
     },
     enter(el,done){
-      
-      this.traState = 'leave'
+      console.log('enter1')
+      console.log(this.currentIndex)
+      // this.traState = 'leave'
+      // console.log(this.name)
+      if(this.currentIndex == 0){
+        this.traState = 'enter'
+      }
       // done()
     },
     leave(el,done){ 
-      
-      this.traState = 'enter'
+      console.log('leave1')
+      console.log(this.currentIndex)
+      // this.traState = 'enter'
+      if(this.currentIndex == 1){
+        this.traState = 'leave'
+      }
       // done()
     }
   },
